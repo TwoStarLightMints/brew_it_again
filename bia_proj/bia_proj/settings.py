@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bia',
+    'coffee_ratio_calculator',
 ]
 
 MIDDLEWARE = [
