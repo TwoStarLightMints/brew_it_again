@@ -2,8 +2,55 @@
 
 {% block title %}Calculator{% endblock %}
 
+{% load static %}
+
+{% block files %}
+<link rel="stylesheet" href="{% static 'calculator.css' %}">
+<script src="{% static 'calculator.js' %}" defer></script>
+{% endblock %}
+
 {% block body %}
 <div>
-    <span id="display">0000.00</span>
+    <div class="radios">
+        <span>Do you need to calculate the amount of water or coffee to be used?</span>
+        <!-- w-or-c stands for water or coffee -->
+        <div>
+            <label for="water-radio">Water</label>
+            <input type="radio" name="w-or-c" id="water-radio" value="water" checked="true">
+        </div>
+        <div>
+            <label for="coffee-radio">Coffee</label>
+            <input type="radio" name="w-or-c" id="coffee-radio" value="coffee">
+        </div>
+    </div>
+
+    <div>
+        <label for="unit">Select the unit of measurement:</label>
+        <select name="unit" id="unit">
+        </select>
+    </div>
+
+    <div id="calculator-body">
+        <span id="display">0</span>
+
+        <div class="numbers">
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="number">0</button>
+            <button class="number">.</button>
+        </div>
+
+        <button id="delete">Delete</button>
+        <button id="clear">Clear</button>
+    </div>
+
+    <button id="calculate">Calculate</button>
 </div>
 {% endblock %}

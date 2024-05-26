@@ -4,6 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Brew It Again - {% block title %}{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'base.css' %}">
+        {% block files %}{% endblock %}
     </head>
 
     <body>
@@ -19,7 +22,7 @@
         </main>
 
         <footer>
-            &copy; TwoStarLightMints
+            Copyright &copy; K.C. Bomonti
         </footer>
     </body>
 </html>
