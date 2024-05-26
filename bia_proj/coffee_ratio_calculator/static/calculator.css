@@ -1,0 +1,24 @@
+#calculator-body {
+    width: fit-content;
+    border: 0.1em solid black;
+    padding: 0.25em;
+
+    margin: 0 auto;
+}
+
+#display {
+    display: inline-block;
+    background-color: grey;
+    width: 100%;
+    text-align: right;
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.number {
+    width: 2em;
+    margin: 0.25em;
+}
