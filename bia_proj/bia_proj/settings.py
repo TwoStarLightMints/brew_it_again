@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bia',
     'coffee_ratio_calculator',
+    'user_auth',
 ]
 
 MIDDLEWARE = [

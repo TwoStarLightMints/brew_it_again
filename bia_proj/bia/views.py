@@ -1,4 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from .forms import LoginForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from .models import CoffeeRecipeEntry
 
 def home(request):
     return render(request, "home.html")
+
+def dashboard(request):
+    users_prev_recipes = CoffeeRecipeEntry.objects.all().filter(owner=request.user)
+    return render(request, "dashboard.html", { "user_recipes": users_prev_recipes })
+
+def view_recipe(request, recipe_id):
+    if request.user.is_authenticated:
+        if CoffeeRecipeEntry.objects.filter(owner=request.user, id=recipe_id).count() > 0:
+            recipe = CoffeeRecipeEntry.objects.get(owner=request.user, id=recipe_id)
+
+            return render(request, "recipe_view.html", { "recipe": recipe })
+        else:
+            return render(request, "recipe_not_found.html")
+    else:
+        return redirect("login")

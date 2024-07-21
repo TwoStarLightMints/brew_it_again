@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+<p>This is {{ request.user.username }}'s dashboard</p>
+
+{% if user_recipes.count > 0 %}
+<p>There are recipes already</p>
+
+{% for recipe in user_recipes %}
+<p>Recipe details...</p>
+{% endfor %}
+{% else %}
+<p>No recipes made</p>
+{% endif %}
+
+{% endblock %}

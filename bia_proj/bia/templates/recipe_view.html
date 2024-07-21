@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<h1>{{ recipe.title }}</h1>
+<p>Grinder Setting: {{ recipe.grinder_setting }}</p>
+<p>Water Ratio: {{ recipe.ratio }}</p>
+<p>Grams of Coffee: {{ recipe.grams_coffee }}</p>
+<p>Mililiters of Water: {{ recipe.mili_water }}</p>
+<p>Brew Time: {{ recipe.brew_time }}</p>
+{% endblock %}
