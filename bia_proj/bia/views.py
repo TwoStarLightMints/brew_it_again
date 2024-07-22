@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from .forms import LoginForm
+from .forms import RecipeForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView
 from .models import CoffeeRecipeEntry
 
 def home(request):
@@ -22,3 +21,24 @@ def view_recipe(request, recipe_id):
             return render(request, "recipe_not_found.html")
     else:
         return redirect("login")
+
+def create_recipe(request):
+    if request.method == "GET":
+        return render(request, "new_recipe.html", { "form": RecipeForm() })
+    elif request.method == "POST":
+        form = RecipeForm(request.POST)
+
+        if form.is_valid():
+            new_recipe = CoffeeRecipeEntry()
+
+            new_recipe.owner = request.user
+            new_recipe.title = form.cleaned_data["title"]
+            new_recipe.grinder_setting = form.cleaned_data["grinder_setting"]
+            new_recipe.ratio = form.cleaned_data["ratio"]
+            new_recipe.grams_coffee = form.cleaned_data["grams_coffee"]
+            new_recipe.mili_water = form.cleaned_data["mili_water"]
+            new_recipe.brew_time = form.cleaned_data["brew_time"]
+
+            new_recipe.save()
+
+            return redirect("dashboard")

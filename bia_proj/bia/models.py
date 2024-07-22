@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 # Stored Coffee Recipe
 class CoffeeRecipeEntry (models.Model):
-    id = models.IntegerField(primary_key=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=40)
     grinder_setting = models.IntegerField()

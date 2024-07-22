@@ -4,12 +4,13 @@
 
 {% block body %}
 <p>This is {{ request.user.username }}'s dashboard</p>
+<a href="{% url 'new_recipe' %}">Create a recipe</a>
 
 {% if user_recipes.count > 0 %}
 <p>There are recipes already</p>
 
 {% for recipe in user_recipes %}
-<p>Recipe details...</p>
+<p>{{ recipe.title }} - <a href="{% url 'recipe' recipe_id=recipe.id %}">View</a></p>
 {% endfor %}
 {% else %}
 <p>No recipes made</p>

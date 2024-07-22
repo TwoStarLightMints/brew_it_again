@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<form action="{% url 'new_recipe' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Create Recipe</button>
+</form>
+{% endblock %}
