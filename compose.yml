@@ -1,0 +1,20 @@
+services:
+  web:
+    build: ./bia_proj
+    command: sh -c "python manage.py migrate --noinput && gunicorn bia_proj.wsgi:application --bind 0.0.0.0:8210"
+    ports:
+      - "127.0.0.1:8000:8210"
+    env_file:
+      ./env
+    depends_on:
+      db
+
+  db:
+    image: postgres:15
+    volumes:
+      - brew_it_again_postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.db
+
+volumes:
+  brew_it_again_postgres_data    
