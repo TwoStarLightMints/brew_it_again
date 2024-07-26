@@ -17,4 +17,4 @@ services:
       - ./.env.db
 
 volumes:
-  brew_it_again_postgres_data    
+  brew_it_again_postgres_data:
