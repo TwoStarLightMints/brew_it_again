@@ -1,24 +1,26 @@
-#calculator-body {
-    width: fit-content;
-    border: 0.1em solid black;
-    padding: 0.25em;
-
-    margin: 0 auto;
+p.result {
+    display: none;
 }
 
-#display {
-    display: inline-block;
-    background-color: grey;
-    width: 100%;
-    text-align: right;
+form>input[type="text"] {
+    width: 50%;
 }
 
-.numbers {
+fieldset {
+    border: none;
+    padding: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
 }
 
-.number {
-    width: 2em;
-    margin: 0.25em;
+fieldset>legend {
+    float: left;
+    padding: 0;
+    width: 50%;
+    display: inline-block;
+}
+
+fieldset>div {
+    display: inline-block;
 }
