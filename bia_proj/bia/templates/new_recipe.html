@@ -2,10 +2,35 @@
 
 {% block title %}Register{% endblock %}
 
+{% load static %}
+
+{% block files %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<script type="module" src="{% static 'input.js' %}"></script>
+{% endblock %}
+
 {% block body %}
 <form action="{% url 'new_recipe' %}" method="post">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit">Create Recipe</button>
+
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title">
+    
+    <label for="grinder_setting">Grinder Setting:</label>
+    <input type="text" name="grinder_setting" id="grinder_setting" class="integer-input">
+    
+    <label for="ratio">Ratio:</label>
+    <input type="text" name="ratio" id="ratio" class="ratio-input">
+    
+    <label for="grams_coffee">Grams of Coffee in:</label>
+    <input type="text" name="grams_coffee" id="grams_coffee" class="float-input">
+    
+    <label for="mili_water">Mililiters of Water in:</label>
+    <input type="text" name="mili_water" id="mili_water" class="float-input">
+    
+    <label for="brew_time">Brew Time:</label>
+    <input type="text" name="brew_time" id="brew_time" class="brew-time-input">
+
+    <button type="submit" class="rounded-button">Create Recipe</button>
 </form>
 {% endblock %}
