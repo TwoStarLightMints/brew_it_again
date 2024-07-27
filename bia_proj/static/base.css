@@ -1,3 +1,7 @@
+* {
+    font-family: "Arial";
+}
+
 html {
     height: 100%;
 }
@@ -8,4 +12,30 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+header, footer {
+    margin: 1em;
+}
+
+main {
+    margin: 0 auto;
+}
+
+.rounded-button {
+    text-decoration: none;
+    padding: .5em;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(230, 7, 7);
+    color: white;
+}
+
+.rounded-button:hover {
+    background-color: rgb(210, 23, 23);
+    cursor: pointer;
+}
+
+button {
+    font-size: 1em;
 }
