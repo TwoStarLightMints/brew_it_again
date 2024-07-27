@@ -7,7 +7,8 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('dashboard', views.dashboard, name="dashboard"),
     path('recipe/<int:recipe_id>', views.view_recipe, name="recipe"),
-    path('new_recipe', views.create_recipe, name="new_recipe")
+    path('delete_recipe/<int:recipe_id>', views.delete_recipe, name="delete_recipe"),
+    path('new_recipe', views.create_recipe, name="new_recipe"),
 ]
 
 from django.conf import settings
