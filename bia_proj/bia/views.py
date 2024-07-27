@@ -42,3 +42,9 @@ def create_recipe(request):
             new_recipe.save()
 
             return redirect("dashboard")
+
+def delete_recipe(request, recipe_id):
+    if CoffeeRecipeEntry.objects.filter(owner=request.user, id=recipe_id).count() > 0 and request.user.is_authenticated:
+        CoffeeRecipeEntry.objects.get(owner=request.user.is_authenticated, id=recipe_id).delete()
+        
+        return redirect("dashboard")
