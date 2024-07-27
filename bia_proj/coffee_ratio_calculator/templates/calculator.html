@@ -6,51 +6,33 @@
 
 {% block files %}
 <link rel="stylesheet" href="{% static 'calculator.css' %}">
-<script src="{% static 'calculator.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<script src="{% static 'calculator.js' %}" type="module" defer></script>
+<script src="{% static 'input.js' %}" type="module" defer></script>
 {% endblock %}
 
 {% block body %}
-<div>
-    <div class="radios">
-        <span>Do you need to calculate the amount of water or coffee to be used?</span>
-        <!-- w-or-c stands for water or coffee -->
+<form>
+    <fieldset>
+        <legend>Do you know the amount of water or coffee you will be using?</legend>
+
         <div>
+        <!-- w-or-c stands for water or coffee -->
             <label for="water-radio">Water</label>
             <input type="radio" name="w-or-c" id="water-radio" value="water" checked="true">
-        </div>
-        <div>
             <label for="coffee-radio">Coffee</label>
             <input type="radio" name="w-or-c" id="coffee-radio" value="coffee">
         </div>
-    </div>
+    </fieldset>
 
-    <div>
-        <label for="unit">Select the unit of measurement:</label>
-        <select name="unit" id="unit">
-        </select>
-    </div>
+    <label for="input-ratio">Enter the ratio you will be using:</label>
+    <input type="text" name="input-ratio" id="input-ratio" class="ratio-input">
 
-    <div id="calculator-body">
-        <span id="display">0</span>
+    <label for="input-amount">Enter the amount of <span id="w-or-c-label">water</span> you will be using:</label>
+    <input type="text" name="input-amount" id="input-amount" class="float-input">
 
-        <div class="numbers">
-            <button class="number">7</button>
-            <button class="number">8</button>
-            <button class="number">9</button>
-            <button class="number">4</button>
-            <button class="number">5</button>
-            <button class="number">6</button>
-            <button class="number">1</button>
-            <button class="number">2</button>
-            <button class="number">3</button>
-            <button class="number">0</button>
-            <button class="number">.</button>
-        </div>
+    <button id="calculate" type="submit" class="rounded-button">Calculate</button>
+</form>
 
-        <button id="delete">Delete</button>
-        <button id="clear">Clear</button>
-    </div>
-
-    <button id="calculate">Calculate</button>
-</div>
+<p class="result" hidden>The amount of <span id="w-or-c-out" hidden></span> you need is <span class="result"></span></p>
 {% endblock %}
