@@ -2,10 +2,22 @@
 
 {% block title %}Register{% endblock %}
 
+{% load static %}
+
+{% block files %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+{% endblock %}
+
 {% block body %}
 <form action="{% url 'register' %}" method="post">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit">Register</button>
+
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username">
+    
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password">
+    
+    <button type="submit" class="rounded-button">Register</button>
 </form>
 {% endblock %}
