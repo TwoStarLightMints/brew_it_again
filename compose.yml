@@ -8,6 +8,7 @@ services:
       ./.env
     depends_on:
       - db
+    restart: always
 
   db:
     image: postgres:15
@@ -15,6 +16,7 @@ services:
       - brew_it_again_postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env.db
+    restart: always
 
 volumes:
   brew_it_again_postgres_data:
