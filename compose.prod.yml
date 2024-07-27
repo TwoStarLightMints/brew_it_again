@@ -1,7 +1,7 @@
 services:
   web:
     build: ./bia_proj
-    command: sh -c "python manage.py migrate --noinput && gunicorn bia_proj.wsgi:application --bind 0.0.0.0:8210"
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate --noinput && gunicorn bia_proj.wsgi:application --bind 0.0.0.0:8210"
     ports:
       - "127.0.0.1:8000:8210"
     env_file:
