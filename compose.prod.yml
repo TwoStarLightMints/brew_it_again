@@ -17,7 +17,7 @@ services:
   db:
     image: postgres:15
     volumes:
-      - brew_it_again_postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env.db.prod
 
