@@ -1,3 +1,5 @@
+#!/bin/sh
+
 echo "Waiting for database..."
 
 while ! nc -z $POSTGRES_HOST $POSTGRES_PORT; do
@@ -5,8 +7,5 @@ while ! nc -z $POSTGRES_HOST $POSTGRES_PORT; do
 done
 
 echo "Database started"
-
-python manage.py flush --no-input
-python manage.py migrate
 
 exec "$@"
