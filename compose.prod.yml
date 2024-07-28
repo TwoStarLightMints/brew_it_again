@@ -1,6 +1,8 @@
 services:
   web:
-    build: ./bia_proj
+    build:
+      context: ./bia_proj
+      dockerfile: Dockerfile.prod
     command: "gunicorn bia_proj.wsgi:application --bind 0.0.0.0:8000"
     ports:
       - "127.0.0.1:8000:8000"
@@ -14,7 +16,7 @@ services:
     volumes:
       - brew_it_again_postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.prod.db
+      - ./.env.db.prod
 
 volumes:
   brew_it_again_postgres_data:
