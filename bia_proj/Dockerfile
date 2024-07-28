@@ -1,15 +1,17 @@
 FROM python:3.12.4-alpine3.20
 WORKDIR /app
 
-RUN pip install --upgrade pip
-
-
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
+COPY ./entrypoint.sh .
+RUN sed -i 's/\r$//g' /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 COPY . .
 
-RUN python manage.py collectstatic --noinput
+ENTRYPOINT [ "/app/entrypoint.sh" ]
