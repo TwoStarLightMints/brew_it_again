@@ -10,6 +10,9 @@ services:
       ./.env.prod
     depends_on:
       - db
+    user: "${UID}:${GID}"
+    volumes:
+      - static_files:/home/bia/web/staticfiles
 
   db:
     image: postgres:15
@@ -19,4 +22,5 @@ services:
       - ./.env.db.prod
 
 volumes:
-  brew_it_again_postgres_data:
+  postgres_data:
+    static_files:
