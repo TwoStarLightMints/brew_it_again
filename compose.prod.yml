@@ -10,7 +10,6 @@ services:
       ./.env.prod
     depends_on:
       - db
-    user: "${UID}:${GID}"
     volumes:
       - static_files:/home/bia/web/staticfiles
 
