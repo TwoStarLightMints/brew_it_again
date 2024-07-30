@@ -39,6 +39,8 @@ RUN chmod +x $BIA_HOME/entrypoint.prod.sh
 
 COPY . $BIA_HOME
 
+RUN mkdir $BIA_HOME/staticfiles/
+
 RUN chown -R bia:bia $BIA_HOME
 
 USER bia
