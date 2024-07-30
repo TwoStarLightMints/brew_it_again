@@ -18,6 +18,21 @@ header, footer {
     margin: 1em;
 }
 
+nav, nav>div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+nav {
+    flex-direction: column;
+}
+
+#home {
+    text-wrap: nowrap;
+    font-size: 2em;
+}
+
 .rounded-button {
     text-decoration: none;
     padding: .5em;
@@ -34,4 +49,10 @@ header, footer {
 
 button {
     font-size: 1em;
+}
+
+@media (min-width: 500px) {
+    nav {
+        flex-direction: row;
+    }
 }
