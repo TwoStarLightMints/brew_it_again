@@ -7,21 +7,22 @@ from .forms import LoginForm, RegisterForm
 
 def login_page(request):
     if request.method == "GET":
-        return render(request, "login.html", { 'login_form': LoginForm() })
+        return render(request, "login.html")
     elif request.method == "POST":
         form = LoginForm(request.POST)
 
         if form.is_valid():
-            user = authenticate(request, username=form.cleaned_data["username"], password=form.cleaned_data["password"])
+            username = username=form.cleaned_data["username"]
+            password = password=form.cleaned_data["password"]
 
-            if user is not None:
+            if User.objects.filter(username=username).exists():
+                user = authenticate(request, username=username, passowrd=password)
+
                 login(request, user)
 
                 return redirect("/dashboard")
             else:
-                return render(request, "wrong.html")
-        else:
-            return render(request, "wrong.html")
+                return render(request, "login.html", { "bad_login": True })
 
 def register_page(request):
     if request.method == "GET":

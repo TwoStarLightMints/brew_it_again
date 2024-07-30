@@ -9,6 +9,11 @@
 {% endblock %}
 
 {% block body %}
+
+{% if bad_login %}
+<p>Wrong username or password</p>
+{% endif %}
+
 <form action="{% url 'login' %}" method="POST">
     {% csrf_token %}
 
