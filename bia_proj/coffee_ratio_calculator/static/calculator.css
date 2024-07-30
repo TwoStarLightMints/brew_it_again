@@ -2,44 +2,34 @@ p.result {
     display: none;
 }
 
-form>input[type="text"] {
-    width: 50%;
-}
-
 fieldset {
     border: none;
     padding: 0;
-    display: grid;
-    grid-auto-rows: 1fr;
-    gap: 1em;
+    margin: 0;
+    width: 100%;
 }
 
 fieldset>legend {
-    width: 25em;
+    display: inline-block;
+    width: 100%;
+    float: none;
+    margin: 0;
+    padding: 0;
 }
 
 fieldset>div {
+    width: fit-content;
     margin: 0 auto;
+    float: none;
 }
 
-
-@media (min-width: 3000px) {
-    fieldset {
-        border: none;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1em;
-    }
-
+@media (min-width: 800px) {
     fieldset>legend {
-        float: left;
-        padding: 0;
         width: 50%;
-        display: inline-block;
+        float: left;
     }
 
     fieldset>div {
-        display: inline-block;
+        float: right;
     }
 }

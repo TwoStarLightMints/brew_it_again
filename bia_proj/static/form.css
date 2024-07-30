@@ -1,11 +1,13 @@
 form {
   display: grid;
   gap: 1em;
-  width: fit-content;
+  width: 80%;
+  margin: 0 auto;
+  justify-items: center;
 }
 
 form>label {
-  width: 25em;
+  width: 100%;
   height: fit-content;
 }
 
@@ -15,26 +17,22 @@ form>button[type="submit"] {
 
 form>input[type="text"] {
   height: fit-content;
-  width: 100%;
+  width: 80%;
 }
 
 
-@media (min-width: 3000px) {
+@media (min-width: 1000px) {
   form {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1em;
-    width: fit-content;
   }
 
   form>label {
     grid-column: 1;
-    width: 25em;
-    height: fit-content;
   }
 
   form>input[type="text"] {
     grid-column: 2;
+    width: auto;
   }
 
   form>button[type="submit"] {
