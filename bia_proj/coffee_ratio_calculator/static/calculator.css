@@ -10,17 +10,36 @@ fieldset {
     border: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
     gap: 1em;
 }
 
 fieldset>legend {
-    float: left;
-    padding: 0;
-    width: 50%;
-    display: inline-block;
+    width: 25em;
 }
 
 fieldset>div {
-    display: inline-block;
+    margin: 0 auto;
+}
+
+
+@media (min-width: 3000px) {
+    fieldset {
+        border: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+    }
+
+    fieldset>legend {
+        float: left;
+        padding: 0;
+        width: 50%;
+        display: inline-block;
+    }
+
+    fieldset>div {
+        display: inline-block;
+    }
 }
