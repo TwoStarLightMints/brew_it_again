@@ -27,7 +27,6 @@ DEBUG = bool(int(os.environ.get('DEBUG')))
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOST').split(" ")
 
-CSRF_TRUSTED_ORIGINS = os.environ.get('TRUSTED_ORIGINS').split(" ")
 
 
 # Application definition
@@ -132,4 +131,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    CSRF_TRUSTED_ORIGINS = os.environ.get('TRUSTED_ORIGINS').split(" ")

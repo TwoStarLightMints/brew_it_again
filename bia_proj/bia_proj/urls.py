@@ -8,4 +8,7 @@ urlpatterns = [
     path('', include('bia.urls')),
     path('login/',include('user_auth.urls')),
     path('calculator/', include('coffee_ratio_calculator.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
