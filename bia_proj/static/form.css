@@ -38,7 +38,6 @@ form>input[type="text"] {
   }
 
   form>button[type="submit"] {
-    grid-column: 1 / 3;
     margin: 0 auto;
     align-self: center;
   }
@@ -51,5 +50,9 @@ form>input[type="text"] {
 @media (min-width: 1250px) {
   form {
     width: 50em;
+  }
+
+  form>button[type="submit"] {
+    grid-column: 1 / 3;
   }
 }

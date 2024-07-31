@@ -24,6 +24,11 @@ fieldset>div {
     float: none;
 }
 
+form>button {
+    margin: 0 auto;
+    align-self: center;
+}
+
 @media (min-width: 800px) {
     fieldset>legend {
         width: 48%;
@@ -32,5 +37,9 @@ fieldset>div {
 
     fieldset>div {
         float: right;
+    }
+
+    form>button {
+        grid-column: 1 / 3;
     }
 }
