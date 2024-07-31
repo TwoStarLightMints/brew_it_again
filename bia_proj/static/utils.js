@@ -31,9 +31,15 @@ export function validate_ratio_input(event) {
     if (validation_units.filter(s => s !== "" && event.data !== "/" && isNaN(s)).length != 0) {
         alert("Please make sure to only enter valid integers");
         event.target.value = remove_char_at(event.target.value, event.target.selectionStart);
+        return;
     } else if (validation_units.length > 2) {
         alert("Please make sure to only enter valid integers");
         event.target.value = remove_char_at(event.target.value, event.target.selectionStart);
+        return;
+    } else if (event.target.value.length > 1 && event.target.value[1] == "0") {
+        alert("You can't divide by 0!");
+        event.target.value = remove_char_at(event.target.value, event.target.selectionStart);
+        return;
     }
 
     if (validation_units[0].length > 1) {
