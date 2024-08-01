@@ -1,7 +1,7 @@
 # This Dockerfile takes heavy inspiration from https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/#gunicorn
 # All credit to the author for providing such a good resource
 
-FROM python:3.12.4-alpine3.20 as builder
+FROM python:3.12.4-alpine3.20 AS builder
 
 WORKDIR /usr/src/bia/
 
