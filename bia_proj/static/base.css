@@ -9,6 +9,9 @@ html {
 body {
     min-height: 100%;
     margin: 0;
+}
+
+.flex-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -45,6 +48,10 @@ nav {
 .rounded-button:hover {
     background-color: rgb(210, 23, 23);
     cursor: pointer;
+}
+
+.centered-text {
+    text-align: center;
 }
 
 button {
