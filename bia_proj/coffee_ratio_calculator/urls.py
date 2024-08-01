@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     path('', views.calculator, name="calculator"),
+    path('save_calculation', views.save_calculation, name="save_calculation"),
 ]
 
 from django.conf import settings

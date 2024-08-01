@@ -12,7 +12,8 @@
 {% endblock %}
 
 {% block body %}
-<form>
+<form method="post" action="{% url 'save_calculation' %}">
+    {% csrf_token %}
     <fieldset>
         <legend>Do you know the amount of water or coffee you will be using?</legend>
 
@@ -26,13 +27,25 @@
     </fieldset>
 
     <label for="input-ratio">Enter the ratio of coffee to water you will be using:</label>
-    <input type="text" name="input-ratio" id="input-ratio" class="ratio-input" placeholder="e.g. 1/18">
+    <input type="text" name="input-ratio" id="input-ratio" class="ratio-input" placeholder="e.g. 1/18" required>
 
     <label for="input-amount">Enter the amount of <span id="w-or-c-label">water</span> you will be using (unit of measurement doesn't matter):</label>
-    <input type="text" name="input-amount" id="input-amount" class="float-input">
+    <input type="text" name="input-amount" id="input-amount" class="float-input" required>
 
-    <button id="calculate" type="submit" class="rounded-button">Calculate</button>
+    <button id="calculate" class="rounded-button">Calculate</button>
+
+    <p class="result" hidden>The amount of <span id="w-or-c-out" hidden></span> you need is <span class="result"></span></p>
+    <input type="hidden" name="result-amount" id="result-amount">
+
+    <label for="save-button">Would you like to save this calculation as a recipe?</label>
+    {% if request.user.is_authenticated %}
+    <button type="submit" formaction="{% url 'save_calculation' %}" class="rounded-button">Save</button>
+    {% else %}
+    <button type="submit" class="rounded-button">Login to Save</button>
+    {% endif %}
 </form>
 
-<p class="result" hidden>The amount of <span id="w-or-c-out" hidden></span> you need is <span class="result"></span></p>
+
+
+
 {% endblock %}

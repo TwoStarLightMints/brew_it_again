@@ -20,13 +20,21 @@
     <input type="text" name="grinder_setting" id="grinder_setting" class="integer-input">
     
     <label for="ratio">Ratio:</label>
-    <input type="text" name="ratio" id="ratio" class="ratio-input">
+    <input type="text" name="ratio" id="ratio" class="ratio-input" value="{{ ratio }}">
     
+    {% if w_or_c %}
     <label for="grams_coffee">Grams of Coffee in:</label>
-    <input type="text" name="grams_coffee" id="grams_coffee" class="float-input">
+    <input type="text" name="grams_coffee" id="grams_coffee" class="float-input" value="{{ input_amount }}">
     
     <label for="mili_water">Mililiters of Water in:</label>
-    <input type="text" name="mili_water" id="mili_water" class="float-input">
+    <input type="text" name="mili_water" id="mili_water" class="float-input" value="{{ result_amount }}">
+    {% else %}
+    <label for="grams_coffee">Grams of Coffee in:</label>
+    <input type="text" name="grams_coffee" id="grams_coffee" class="float-input" value="{{ result_amount }}">
+    
+    <label for="mili_water">Mililiters of Water in:</label>
+    <input type="text" name="mili_water" id="mili_water" class="float-input" value="{{ input_amount }}">
+    {% endif %}
     
     <label for="brew_time">Brew Time:</label>
     <input type="text" name="brew_time" id="brew_time" class="brew-time-input">

@@ -24,7 +24,14 @@ def view_recipe(request, recipe_id):
 
 def create_recipe(request):
     if request.method == "GET":
-        return render(request, "new_recipe.html", { "form": RecipeForm() })
+        return render(request, "new_recipe.html",
+                      {
+                          "form": RecipeForm(),
+                          "ratio": request.session.pop("ratio", ""),
+                          "w_or_c": request.session.pop("w_or_c", "") == "water",
+                          "input_amount": request.session.pop("input_amount", ""),
+                          "result_amount": request.session.pop("result_amount", ""),
+                      })
     elif request.method == "POST":
         form = RecipeForm(request.POST)
 

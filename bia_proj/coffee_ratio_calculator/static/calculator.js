@@ -24,12 +24,15 @@ function calculate() {
     const [ ratio_num, ratio_den ] = input_ratio.value.split("/").map(n => parseFloat(n));
     const substance_amount = parseFloat(input_amount.value);
     const substance_in_type_val = document.querySelector('input[name="w-or-c"]:checked').value;
+    const result_out = document.querySelector('#result-amount');
 
     if (substance_in_type_val === "water") {
         result_span.textContent = ((substance_amount * ratio_num) / ratio_den).toFixed(2);
+        result_out.value = ((substance_amount * ratio_num) / ratio_den).toFixed(2);
         output_substance.textContent = "coffee";
     } else if (substance_in_type_val === "coffee") {
         result_span.textContent = ((substance_amount * ratio_den) / ratio_num).toFixed(2);
+        result_out.value = ((substance_amount * ratio_den) / ratio_num).toFixed(2);
         output_substance.textContent = "water";
     }
     
@@ -37,6 +40,7 @@ function calculate() {
     result_paragraph.removeAttribute('hidden');
     result_span.removeAttribute('hidden');
     output_substance.removeAttribute('hidden');
+
 }
 
 calc_button.addEventListener('click', e => {

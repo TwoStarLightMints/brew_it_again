@@ -12,15 +12,15 @@ def login_page(request):
         form = LoginForm(request.POST)
 
         if form.is_valid():
-            username = username=form.cleaned_data["username"]
-            password = password=form.cleaned_data["password"]
+            user = authenticate(request, username=form.cleaned_data["username"], password=form.cleaned_data["password"])
 
-            if User.objects.filter(username=username).exists():
-                user = authenticate(request, username=username, passowrd=password)
-
+            if user:
                 login(request, user)
 
-                return redirect("/dashboard")
+                if request.session.pop("skip_to_create", False):
+                    return redirect("/new_recipe")
+                else:
+                    return redirect("/dashboard")
             else:
                 return render(request, "login.html", { "bad_login": True })
 
