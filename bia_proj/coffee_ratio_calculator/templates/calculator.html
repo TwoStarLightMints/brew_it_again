@@ -37,11 +37,11 @@
     <p class="result" hidden>The amount of <span id="w-or-c-out" hidden></span> you need is <span class="result"></span></p>
     <input type="hidden" name="result-amount" id="result-amount">
 
-    <label for="save-button">Would you like to save this calculation as a recipe?</label>
+    <label for="save-button" hidden>Would you like to save this calculation as a recipe?</label>
     {% if request.user.is_authenticated %}
-    <button type="submit" formaction="{% url 'save_calculation' %}" class="rounded-button">Save</button>
+    <button id="save-button" type="submit" formaction="{% url 'save_calculation' %}" class="rounded-button" hidden>Save</button>
     {% else %}
-    <button type="submit" class="rounded-button">Login to Save</button>
+    <button id="save-button" type="submit" class="rounded-button" hidden>Login to Save</button>
     {% endif %}
 </form>
 

@@ -1,4 +1,4 @@
-p.result {
+label[for="save-button"], #save-button, p.result {
     display: none;
 }
 

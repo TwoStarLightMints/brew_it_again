@@ -1,13 +1,15 @@
 import { validate_ratio_input, validate_float_input } from '/static/utils.js';
 
 const calc_button = document.querySelector('#calculate');
-const result_paragraph = document.querySelector('p.result');
 const result_span = document.querySelector('span.result');
 const input_ratio = document.querySelector('#input-ratio')
 const input_amount = document.querySelector('#input-amount');
 const input_substance = document.querySelector('#w-or-c-label');
 const output_substance = document.querySelector('#w-or-c-out');
 const substance_in_type_radio = document.querySelectorAll('input[name="w-or-c"]');
+
+const result_paragraph = document.querySelector('p.result');
+const save_elements = document.querySelectorAll('#save-button,label[for="save-button"]');
 
 Array.from(substance_in_type_radio).forEach(elem => elem.addEventListener('change', e => {
     const substance_in_type_val = document.querySelector('input[name="w-or-c"]:checked').value;
@@ -18,6 +20,11 @@ Array.from(substance_in_type_radio).forEach(elem => elem.addEventListener('chang
     result_paragraph.setAttribute('hidden', "");
     result_span.setAttribute('hidden', "");
     output_substance.setAttribute('hidden', "");
+
+    Array.from(save_elements).forEach(save_elem => {
+        save_elem.style.display = 'none';
+        save_elem.setAttribute('hidden', "");
+    });
 }))
 
 function calculate() {
@@ -41,6 +48,10 @@ function calculate() {
     result_span.removeAttribute('hidden');
     output_substance.removeAttribute('hidden');
 
+    Array.from(save_elements).forEach(elem => {
+        elem.style.display = 'inline-block';
+        elem.removeAttribute('hidden');
+    });
 }
 
 calc_button.addEventListener('click', e => {
