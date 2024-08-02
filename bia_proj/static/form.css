@@ -15,7 +15,7 @@ form>button[type="submit"] {
   margin: 0 auto;
 }
 
-form>input[type="text"] {
+form>input[type="text"], form>input[type="password"] {
   height: fit-content;
   width: 80%;
 }
