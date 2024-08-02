@@ -54,6 +54,5 @@ form>input[type="text"], form>input[type="password"] {
   }
 
   form>button[type="submit"] {
-    grid-column: 1 / 3;
   }
 }
