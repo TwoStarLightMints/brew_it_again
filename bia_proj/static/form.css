@@ -32,7 +32,7 @@ form>input[type="text"], form>input[type="password"] {
     grid-column: 1;
   }
 
-  form>input[type="text"] {
+  form>input[type="text"], form>input[type="password"] {
     grid-column: 2;
     width: auto;
   }
