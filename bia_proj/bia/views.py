@@ -55,3 +55,25 @@ def delete_recipe(request, recipe_id):
         CoffeeRecipeEntry.objects.get(owner=request.user.is_authenticated, id=recipe_id).delete()
         
         return redirect("dashboard")
+
+def edit_recipe(request, recipe_id):
+    if CoffeeRecipeEntry.objects.filter(owner=request.user, id=recipe_id).count() > 0 and request.user.is_authenticated:
+        if request.method == "GET":
+            recipe_to_edit = CoffeeRecipeEntry.objects.get(owner=request.user, id=recipe_id)
+            return render(request, "edit_recipe.html", { "recipe": recipe_to_edit })
+        elif request.method=="POST":
+            form = RecipeForm(request.POST)
+
+            if form.is_valid():
+                curr_recipe = CoffeeRecipeEntry.objects.get(owner=request.user, id=recipe_id)
+
+                curr_recipe.title = form.cleaned_data["title"]
+                curr_recipe.grinder_setting = form.cleaned_data["grinder_setting"]
+                curr_recipe.ratio = form.cleaned_data["ratio"]
+                curr_recipe.grams_coffee = form.cleaned_data["grams_coffee"]
+                curr_recipe.mili_water = form.cleaned_data["mili_water"]
+                curr_recipe.brew_time = form.cleaned_data["brew_time"]
+
+                curr_recipe.save()
+
+                return redirect(f"/recipe/{recipe_id}")

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Editing Recipe {{ recipe.title }}{% endblock %}
+
+{% load static %}
+
+{% block files %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<script type="module" src="{% static 'input.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'edit_recipe' recipe_id=recipe.id %}" method="post">
+    {% csrf_token %}
+
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" value="{{ recipe.title }}">
+    
+    <label for="grinder_setting">Grinder Setting:</label>
+    <input type="text" name="grinder_setting" id="grinder_setting" class="integer-input" value="{{ recipe.grinder_setting }}">
+    
+    <label for="ratio">Ratio:</label>
+    <input type="text" name="ratio" id="ratio" class="ratio-input" value="{{ recipe.ratio }}">
+    
+    <label for="grams_coffee">Grams of Coffee in:</label>
+    <input type="text" name="grams_coffee" id="grams_coffee" class="float-input" value="{{ recipe.grams_coffee }}">
+    
+    <label for="mili_water">Mililiters of Water in:</label>
+    <input type="text" name="mili_water" id="mili_water" class="float-input" value="{{ recipe.mili_water }}">
+    
+    <label for="brew_time">Brew Time:</label>
+    <input type="text" name="brew_time" id="brew_time" class="brew-time-input" value="{{ recipe.brew_time }}">
+
+    <button type="submit" class="rounded-button">Update Recipe</button>
+</form>
+{% endblock %}
