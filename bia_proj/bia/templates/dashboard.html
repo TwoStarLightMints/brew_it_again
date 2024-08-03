@@ -7,13 +7,17 @@
 <a href="{% url 'new_recipe' %}" class="rounded-button">Create a recipe</a>
 
 {% if user_recipes.count > 0 %}
-<p>There are recipes already</p>
-
 {% for recipe in user_recipes %}
-<p>{{ recipe.title }} - <a href="{% url 'recipe' recipe_id=recipe.id %}" class="rounded-button">View</a> <a href="{% url 'delete_recipe' recipe_id=recipe.id %}" class="rounded-button">Delete</a></p>
+<div class="recipe-preview">
+  <h2>
+    <a href="{% url 'recipe' recipe_id=recipe.id %}">{{ recipe.title }}</a>
+  </h2>
+  <a href="{% url 'edit_recipe' recipe_id=recipe.id %}" class="rounded-button">Edit</a>
+  <a href="{% url 'delete_recipe' recipe_id=recipe.id %}" class="rounded-button">Delete</a>
+</div>
 {% endfor %}
 {% else %}
-<p>No recipes made</p>
+<p>You don't have any saved recipes</p>
 {% endif %}
 
 {% endblock %}
